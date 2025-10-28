@@ -1,0 +1,171 @@
+.main{
+    min-height: 100vh;
+}
+
+/* timeline */
+.timeline {
+  box-sizing: border-box;
+  position: relative;
+  left: 12px;
+}
+
+/* vertical ruler */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  background-color: var(--text-grey-light);
+  border-radius: 8px;
+  top: 0;
+  bottom: 0;
+}
+
+/* container */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  width: 70%;
+}
+
+/* circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: -12px;
+  background-color: var(--bg-grey);
+  border: 4px solid var(--text-grey-light);
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* arrows to the container */
+.container::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 28px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid var(--bg-grey);
+  border-width: 10px 10px 10px 0;
+  border-color: transparent var(--bg-grey) transparent transparent;
+}
+
+/* content */
+.content {
+  width: 100%;
+  padding: var(--spacing-medium);
+  background-color: var(--bg-grey);
+  position: relative;
+  border-radius: var(--primary-card-radius);
+  transition: transform 0.3s ease;
+}
+
+.content p{
+  color: var(--text-grey-dark);
+}
+
+.content:hover {
+  transform: var(--card-hover-scale);
+}
+
+
+html.dark-mode .content{
+  background-color: rgb(29, 29, 31);
+}
+
+html.dark-mode .content p{
+  color: var(--text-grey-light);
+}
+
+html.dark-mode .container::before{
+  border: medium solid var(--text-black);
+  border-width: 10px 10px 10px 0;
+  border-color: transparent var(--text-black) transparent transparent;
+}
+
+
+@media (max-width: 600px) {
+  .navigation-mob{
+        width: 90%;
+    }
+
+    .nav-name-mob h2{
+        font-size: 17px;
+    }
+
+    .navigation-mob img.icon{
+        height: 25.5px;
+    }
+
+    .nav-btn-mob{
+        font-size: 16px;
+    }
+
+    .main{
+        margin: 56px auto;
+        width: 90%; 
+    }
+
+    .main h1 {
+        font-size: 24px;
+        margin: 8px 0;
+    }
+
+    .timeline{
+      margin: 12px 0 28px 0;
+    }
+
+    .container{
+      width: 60%;
+    }
+
+    .content h3{
+      font-size: 18px;
+      margin: 8px 0;
+    }
+
+    .content p{
+      margin: 0;
+      margin: 2px 0;
+    }
+
+    .footer{
+        font-size: 12px;
+    }
+
+    .footer-section{
+        width: 90%;
+    }
+
+    .footer-right{
+        gap: 10px;
+    }
+}
+
+
+/* Fade-in effect for highlight text */
+.timeline, .content {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInText 1s ease forwards;
+}
+
+.timeline{
+    animation-delay: 0.1s;
+}
+
+.content {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInText {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
